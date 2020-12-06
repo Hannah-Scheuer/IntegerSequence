@@ -19,4 +19,13 @@ public class Range implements IntegerSequence{
     return current != end;
   }
 
+   public int next(){
+     if (!hasNext()) {
+       throw new NoSuchElementException("The number " +current+1+ " is not within the bounds of this Range");
+     }
+     int curr = current;
+     current += 1;
+     return curr;
+   }
+
 }
