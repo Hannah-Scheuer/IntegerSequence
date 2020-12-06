@@ -4,6 +4,7 @@ public class Range implements IntegerSequence{
   public Range(int start, int end){
     start = this.start;
     end = this.end;
+    current = start;
   }
 
   public void reset(){
@@ -12,6 +13,10 @@ public class Range implements IntegerSequence{
 
   public int length(){
     return end-start;
+  }
+
+  public boolean hasNext(){
+    return current != end;
   }
 
 }
