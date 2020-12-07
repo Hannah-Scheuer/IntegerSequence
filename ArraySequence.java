@@ -15,7 +15,14 @@ public class ArraySequence implements IntegerSequence{
     return currentIndex < data.length;
   }
 
-  
+  public int next(){
+    if (!hasNext()) {
+      throw new NoSuchElementException("The number " +current+1+ " is not within the bounds of this Range");
+    }
+    int curr = currentIndex;
+    currentIndex += 1;
+    return curr;
+  }
 
 
 }
