@@ -2,6 +2,7 @@ import java.util.NoSuchElementException;
 public class ArraySequence implements IntegerSequence{
   private int currentIndex;
   private int[] data;
+  private int size;
 
   /*Construct the sequence by copying values from the other array into the data array*/
   public ArraySequence(int [] other){
@@ -10,6 +11,7 @@ public class ArraySequence implements IntegerSequence{
       data[i]=other[i];
     }
     currentIndex=0;
+    size = other.length;
   }
 
   public ArraySequence(IntegerSequence otherseq){
@@ -25,12 +27,12 @@ public class ArraySequence implements IntegerSequence{
   }
 
   public boolean hasNext(){
-    return currentIndex < data.length;
+    return currentIndex < size;
   }
 
   public int next(){
     if (!hasNext()) {
-      throw new NoSuchElementException("The number " +currentIndex+1+ " is not within the bounds of this Range");
+      throw new NoSuchElementException("The number at index " +currentIndex+1+ " is not within the bounds of this Range");
     }
     int curr = data[currentIndex];
     currentIndex += 1;
@@ -38,7 +40,7 @@ public class ArraySequence implements IntegerSequence{
   }
 
   public int length(){
-    return data.length;
+    return size;
   }
 
   public void reset(){
